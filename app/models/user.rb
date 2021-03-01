@@ -9,5 +9,5 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
   validates :email, format: { with: /\A.*@.*\.com\z/ }
-  validates :password, presence: true
+  validates :encrypted_password, presence: true
 end
