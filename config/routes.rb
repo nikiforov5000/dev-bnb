@@ -7,5 +7,5 @@ Rails.application.routes.draw do
 
   root to: 'developers#index'
   resources :developers , except: :index
-
+  get "developers/:id", to: "developers#show" # , as: :developer
 end
