@@ -10,6 +10,11 @@ class DevelopersController < ApplicationController
    # end
   end
 
+  def show
+    @developer
+  end
+  
+
   def new
     @developer = Developer.new
   end
