@@ -1,7 +1,7 @@
 class Booking < ApplicationRecord
   belongs_to :developer
   belongs_to :renter, foreign_key: :renter_id, class_name: "User"
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   validates :project_name, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
