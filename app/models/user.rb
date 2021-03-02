@@ -8,6 +8,6 @@ class User < ApplicationRecord
   has_many :reviews, through: :bookings
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
-  validates :email, format: { with: /\A.*@.*\.com\z/ }
+  validates :email, presence: true # Add REGEX Format !!!!
   validates :encrypted_password, presence: true
 end
