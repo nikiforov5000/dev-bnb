@@ -13,7 +13,6 @@ class DevelopersController < ApplicationController
   def show
     @developer
   end
-  
 
   def new
     @developer = Developer.new
@@ -38,5 +37,4 @@ class DevelopersController < ApplicationController
   def developer_params
     params.require(:developer).permit(:name, :specialty, :age, :bio, :daily_rate)
   end
-
 end

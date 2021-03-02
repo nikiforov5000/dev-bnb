@@ -1,0 +1,24 @@
+<div class="container margin-top-negative">
+<marquee>Yess babyyyyyy!</marquee>
+  <div class="row">
+    <div class="col-8">
+      <div class="developer-show-card">
+        <h1><%= @developer.name %></h1>
+        <p class="developer-show-bio"><%= @developer.bio %></p>
+      </div>
+      <div class="developer-show-card">
+        <h2>Development languages</h2>
+        <p><%= @developer.specialty %></p>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="developer-show-card">
+        <h2>Hire the developer!</h2>
+         <p>$<%= @developer.daily_rate %></p>
+        <button type="button">Book developer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
