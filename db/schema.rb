@@ -21,14 +21,12 @@ ActiveRecord::Schema.define(version: 2021_03_01_140004) do
     t.date "end_date"
     t.integer "total_price"
     t.bigint "developer_id", null: false
-    t.bigint "user_id", null: false
     t.bigint "renter_id"
     t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["developer_id"], name: "index_bookings_on_developer_id"
     t.index ["renter_id"], name: "index_bookings_on_renter_id"
-    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "developer_skills", force: :cascade do |t|
@@ -47,12 +45,10 @@ ActiveRecord::Schema.define(version: 2021_03_01_140004) do
     t.integer "age"
     t.text "bio"
     t.integer "daily_rate"
-    t.bigint "user_id", null: false
     t.bigint "owner_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["owner_id"], name: "index_developers_on_owner_id"
-    t.index ["user_id"], name: "index_developers_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -85,11 +81,9 @@ ActiveRecord::Schema.define(version: 2021_03_01_140004) do
   end
 
   add_foreign_key "bookings", "developers"
-  add_foreign_key "bookings", "users"
   add_foreign_key "bookings", "users", column: "renter_id"
   add_foreign_key "developer_skills", "developers"
   add_foreign_key "developer_skills", "skills"
-  add_foreign_key "developers", "users"
   add_foreign_key "developers", "users", column: "owner_id"
   add_foreign_key "reviews", "bookings"
 end
