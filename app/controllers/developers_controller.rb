@@ -3,13 +3,11 @@ class DevelopersController < ApplicationController
   def index 
    # if params[:query].present? 
     #  @query = params[:query]
-    #  @developers = Developer.where("name LIKE ?", "%#{params[:query]}%")
+    #  @developers = Developer.where(name: "%#{params[:query]}%")
    # else
       @developers = Developer.all
     # end
   end
-
-  def show; end
 
   private
 
