@@ -6,15 +6,15 @@
         <p class="developer-show-bio"><%= @developer.bio %></p>
       </div>
       <div class="developer-show-card">
-        <h3>Development languages</h3>
+        <h2>Development languages</h2>
         <p><%= @developer.specialty %></p>
       </div>
     </div>
 
     <div class="col-4">
       <div class="developer-show-card">
-        <h3>Hire the developer!</h3>
-        <p>Developer daily rate: $500</p>
+        <h2>Hire the developer!</h2>
+         <p>$<%= @developer.daily_rate %></p>
         <button type="button">Book developer</button>
         </div>
       </div>
