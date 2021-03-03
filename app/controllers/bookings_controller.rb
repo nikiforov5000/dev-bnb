@@ -2,7 +2,6 @@ class BookingsController < ApplicationController
   before_action :set_developer, only: [:new, :create]
 
   def new
-    @developer = Developer.find(params[:developer_id])
     @booking = Booking.new
   end
 
