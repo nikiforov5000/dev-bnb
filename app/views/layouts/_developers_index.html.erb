@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row d-flex justify-content-center"> 
+    <% @developers.each do |developer| %>
+      <div class="col-lg-4">
+        <div class="card m-2" style="">
+          <%# <img src="..." class="card-img-top" alt="..."> %>
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to developer.name, developer %></h5>
+            <p class="card-text">Specialty: <%= developer.specialty %></p>
+            <p class="card-text">Price per day: $<%= developer.daily_rate %></p>
+            <%= link_to "See details", developer, class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div> 
+</div>  
