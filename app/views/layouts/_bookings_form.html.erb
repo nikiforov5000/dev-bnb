@@ -1,0 +1,13 @@
+  <div class="row d-flex justify-content-center"> 
+    <% @bookings.each do |booking| %>
+      <div class="col-12">
+        <div class="card" style="">
+          <%# <img src="..." class="card-img-top" alt="..."> %>
+          <div class="card-body">
+            <p><%= link_to booking.project_name, booking %></h4>
+            <p>Price: $<%= booking.total_price %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div> 

@@ -1,24 +1,17 @@
 <div class="container margin-top-negative">
 
-  <div class="row">
-    <div class="col-8">
-      <div class="developer-show-card">
-        <h1><%= @developer.name %></h1>
-        <p class="developer-show-bio"><%= @developer.bio %></p>
-      </div>
-      <div class="developer-show-card">
-        <h2>Development languages</h2>
-        <p><%= @developer.specialty %></p>
-      </div>
-    </div>
+<div class="wrapper">
 
-    <div class="col-4">
-      <div class="developer-show-card">
-        <h2>Hire the developer!</h2>
-         <p>$<%= @developer.daily_rate %></p>
-        <%= link_to "Book the developer", new_developer_booking_path(@developer)  %>
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="profile">
+    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png", class: "thumbnail" %>
+		<h3 class="name"><%= @developer.name %></h3>
+		<p class="title">Profile</p>
+    <p class="title">$<%= @developer.daily_rate %></p>
+		<p class="description"><%= @developer.bio %></p>
+		<button type="button" class="btn"><%= link_to "Hire developer", new_developer_booking_path(@developer)  %> </button>
+	</div>
+
+	</div>
+</div>
+	</a>
 </div>
