@@ -4,6 +4,8 @@ puts "Clean database"
 
 # USER ############################
 User.destroy_all
+Developer.destroy_all
+
 puts "Destroy Users"
 20.times do
   user = User.new(
@@ -15,45 +17,75 @@ puts "Destroy Users"
   puts user.name
   puts user.email
   puts user.password
+  # DEVELOPER ########################
+  4.times do
+    puts "--Destroy Developers"
+    developer = Developer.new(
+      owner: User.last,
+      name: Faker::Name.name,
+      specialty: %w[PHP JS Ruby Web-Design C++ Pascal].sample,
+      age: rand(18..65),
+      bio: "A good bio can be used to help find employment
+      or establish your credentials as an expert in
+      software development. So, a powerful bio is a
+      must-have for anyone. Want to see a great
+      example? This
+      may help you out.
+      software developer bio",
+      daily_rate: rand(20..200)
+    )
+    developer.save!
+    puts developer.owner 
+    puts developer.name
+    puts developer.specialty
+    puts developer.age
+    puts developer.bio
+    puts developer.daily_rate
+  end
+
 end
 
-# DEVELOPER ########################
-Developer.destroy_all
-20.times do
-  puts "--Destroy Developers"
-  developer = Developer.new(
-    owner: User.last, # Validation failed: Owner must exist
-    name: Faker::Name.name,
-    specialty: %w[PHP JS Ruby Web-Design C++ Pascal].sample,
-    age: rand(18..65),
-    bio: "A good bio can be used to help find employment
-    or establish your credentials as an expert in
-    software development. So, a powerful bio is a
-    must-have for anyone. Want to see a great
-    example? This
-    may help you out.
-    software developer bio",
-    daily_rate: rand(20..200)
-  )
-  developer.save!
-  puts developer.owner 
-  puts developer.name
-  puts developer.specialty
-  puts developer.age
-  puts developer.bio
-  puts developer.daily_rate
-end
 
 # BOOKING ##########################
 Booking.destroy_all
 20.times do
   booking = Booking.new(
-    project_name: %w[NewStaff CrazyProject BestWebApp], 
+    project_name: Faker::Game.title, 
     start_date: Date.new, 
     end_date: Date.new + 1, 
     total_price: rand(500..5000), 
-    status: %w[done undone].sample,
+    status: %w[accepted pending].sample,
     developer: Developer.all.sample,
+    renter: User.all.sample
+  )
+  booking.save!
+  puts booking
+
+  
+end
+4.times do
+  booking = Booking.new(
+    project_name: Faker::Game.title, 
+    start_date: Date.new, 
+    end_date: Date.new + 1, 
+    total_price: rand(500..5000), 
+    status: %w[accepted pending].sample,
+    developer: Developer.all.sample,
+    renter: User.first
+  )
+  booking.save!
+  puts booking
+
+
+end
+5.times do
+  booking = Booking.new(
+    project_name: Faker::Game.title, 
+    start_date: Date.new, 
+    end_date: Date.new + 1, 
+    total_price: rand(500..5000), 
+    status: %w[accepted pending].sample,
+    developer: User.first.developers.sample,
     renter: User.all.sample
   )
   booking.save!

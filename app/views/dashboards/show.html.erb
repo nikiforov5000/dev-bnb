@@ -1,0 +1,29 @@
+
+<% @title_content = "My dashboard" %>
+<%#= @renter.name %>
+<%= render "layouts/header_for_index", locals: { title_content: @title_content } %>
+  <div class="row px-4">
+    <div class="col-6 bg-info">
+      <% @title_content = "My offers" %>
+      <%= render "layouts/header_for_index", locals: { title_content: @title_content } %>
+      <% @title_content = "My offers" %>
+      <%= render 'layouts/bookings_form', locals: {
+        bookings: @bookings = @requests_accepted
+        } %>
+      <hr>
+      <%= render 'layouts/bookings_form', locals: {
+        bookings: @bookings = @requests_pending
+        } %>
+    </div>  
+    <div class="col-6 bg-success">
+      <% @title_content = "My current bookings" %>
+      <%= render "layouts/header_for_index", locals: { title_content: @title_content } %>
+      <%= render 'layouts/bookings_form', locals: {
+        bookings: @bookings = @my_bookings_accepted
+        } %>
+      <hr>
+      <%= render 'layouts/bookings_form', locals: {
+        bookings: @bookings = @my_bookings_pending
+        } %>
+    </div>
+  </div>
