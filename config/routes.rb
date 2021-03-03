@@ -3,6 +3,6 @@ Rails.application.routes.draw do
 
   root to: 'developers#index'
   resources :developers , except: :index do
-    resources :bookings, only: [:new, :create]
+    resources :bookings, only: [:show, :new, :create]
   end
 end
