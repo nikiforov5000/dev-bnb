@@ -1,9 +1,12 @@
-<h1>Create your developer</h1>
-<%= simple_form_for @developer do |f| %>
-  <%= f.input :name %>
-  <%= f.input :specialty %>
-  <%= f.input :age %>
-  <%= f.input :bio %>
-  <%= f.input :daily_rate %>
-  <%= f.submit "Create profile", class: "btn btn-primary" %>
-<% end %>
+<div class="container">
+  <h1>Create your developer</h1>
+  <%= simple_form_for @developer do |f| %>
+    <%= f.input :name %>
+    <%= f.input :specialty %>
+    <%= f.input :age %>
+    <%= f.input :bio %>
+    <%= f.input :daily_rate %>
+    <%= f.submit "Create profile", class: "btn btn-primary" %>
+  <% end %>
+</div>
+s
