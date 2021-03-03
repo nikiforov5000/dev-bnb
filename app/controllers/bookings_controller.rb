@@ -9,10 +9,11 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.renter = current_user
+    @booking.developer = @developer
     @booking.total_price = ((@booking.end_date - @booking.start_date).to_i + 1) * @developer.daily_rate
-    @booking.status = "Pending confirmation"
+    @booking.status = "Confirmed"
     if @booking.save
-      redirect_to developer_booking_path(@developer, @booking)
+      redirect_to booking_path(@booking)
     else
       render :new
     end
@@ -27,7 +28,7 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date)
+    params.require(:booking).permit(:start_date, :end_date, :project_name)
   end
 
   def set_developer

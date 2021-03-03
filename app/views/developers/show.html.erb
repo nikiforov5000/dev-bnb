@@ -16,7 +16,7 @@
       <div class="developer-show-card">
         <h2>Hire the developer!</h2>
          <p>$<%= @developer.daily_rate %></p>
-        <button type="button">Book developer</button>
+        <%= link_to "Book the developer", new_developer_booking_path(@developer)  %>
         </div>
       </div>
     </div>
