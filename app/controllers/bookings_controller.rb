@@ -11,7 +11,7 @@ class BookingsController < ApplicationController
     @booking.renter = current_user
     @booking.developer = @developer
     @booking.total_price = ((@booking.end_date - @booking.start_date).to_i + 1) * @developer.daily_rate
-    @booking.status = "Pending owner approval"
+    @booking.status = "pending"
     if @booking.save
       redirect_to booking_path(@booking)
     else
