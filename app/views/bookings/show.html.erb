@@ -1,11 +1,11 @@
 <div class="container">
   <h1>Here is your booking</h1>
-  <%= link_to "See in my dashboard", "" %>
-  <p>Start date:<%= @booking.start_date %></p>
-  <p>End date:<%= @booking.end_date %></p>
-  <p>Developer: <%= @booking.developer.name %></p>
+  <%= link_to "To my dashboard", "" %>
+  <p>From <%= @booking.start_date %> To <%= @booking.end_date %></p>
+  <p>Name of the developer: <%= link_to @booking.developer.name, developer_path(@booking.developer) %></p>
   <p>Renter: <%= @booking.renter.name %></p>
-  <p>Total price: <%= @booking.total_price %></p>
+  <p>Owner: <%= @booking.developer.owner.name %></p>
+  <p>Total price: $<%= @booking.total_price %></p>
   <p>Status: <%= @booking.status %></p>
   <%= link_to "Write a review", new_booking_review_path(@booking) %> <br>
 
