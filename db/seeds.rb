@@ -97,7 +97,7 @@ Review.destroy_all
 20.times do
   review = Review.new(
     title: ["good work", "excellent", "could be better", "finished on time AAA +++", "do not recommend"].sample,
-    rating: rand(0..5),
+    rating: rand(1..5),
     content: "Review sites can be a springboard for content
     ideas – ideas that already reflect something your 
     audience thinks, whether it’s about how to use your 
