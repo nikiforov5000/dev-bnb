@@ -5,11 +5,8 @@ Rails.application.routes.draw do
   resources :developers , except: :index do
     resources :bookings, only: [:new, :create]
   end
-  resources :bookings, only: [:index, :show]
-
-
-  
   resource :dashboard, only: :show
-
-
+  resources :bookings, only: [:show, :index] do
+    resources :reviews, only: [:new, :create]
+  end
 end
