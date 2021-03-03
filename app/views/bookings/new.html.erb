@@ -1,0 +1,8 @@
+<h1>Create your booking</h1>
+<h3> <% @developer.name %> is available at the following dates:</h3>
+<%= simple_form_for [@developer, @booking] do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.input :total_price %>
+  <%= f.submit "Book the developer", class: "btn btn-primary" %>
+<% end %>
