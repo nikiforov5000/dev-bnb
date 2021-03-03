@@ -1,20 +1,20 @@
 
 *{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
-  width: 100%;
-  height: 100vh;
+	width: 100%;
+	height: 100vh;
 	display: flex;
 	position: relative;
 	background: #fcfcfc;
-  align-items: center;
+	align-items: center;
 	flex-direction: column;
 	justify-content: center;
-
+	
 	font-family: 'Open Sans', sans-serif;
 	font-size: 100%;
 }
@@ -30,8 +30,8 @@ $shadow: 0 13px 26px rgba(#000, .2), 0 3px 6px rgba(#000, .2);
 // ------------------------------------------------
 
 .customSlider {
-  opacity: 0;
-  display: none;
+	opacity: 0;
+	display: none;
 	+ label {
 		position: relative;
 		top: 35px;
@@ -57,35 +57,35 @@ $shadow: 0 13px 26px rgba(#000, .2), 0 3px 6px rgba(#000, .2);
 			transition: all .5s;
 		}
 	}
-
+	
 	&:checked + label:after {
 		height: 34px; width: 34px;
 		top: -87px; left: -19px;
 		border-radius: 50%;
 	}
-
+	
 	&:checked ~ .wrapper {
 		color: #fff;
 		transition: background .6s ease;
 		background: #31394D;
-
+		
 		.top-icons {
 			i {
 				color: #fff;
 			}
 		}
-
+		
 		.profile {
 			// &:after {background: #ececece;}
 			.name {
 				color: #FDFEFF;
 			}
-
-
+			
+			
 			.title {
 				color: #7C8097;
 			}
-
+			
 			
 			.title {
 				color: #7C8097;
@@ -99,7 +99,7 @@ $shadow: 0 13px 26px rgba(#000, .2), 0 3px 6px rgba(#000, .2);
 			h4 {
 				color: #FFFFFF;
 			}
-
+			
 			p {
 				color: #666B7D;
 			}
@@ -108,14 +108,14 @@ $shadow: 0 13px 26px rgba(#000, .2), 0 3px 6px rgba(#000, .2);
 }
 
 .wrapper {
-  width: 600px;
-  height: 540px;
-  background: #FDFEFF;
+	width: 600px;
+	height: 540px;
+	background: #FDFEFF;
 	transition: background .6s ease;
 	border-radius: 10px;
 	padding: 20px 20px 20px 20px;
 	box-shadow: 0 8px 40px rgba(#000000, .2);
-
+	
 	.top-icons {
 		i {
 			color: #080911;
@@ -134,7 +134,7 @@ $shadow: 0 13px 26px rgba(#000, .2), 0 3px 6px rgba(#000, .2);
 	.profile {
 		margin-top: 2.2em;
 		position: relative;
-
+		
 		&:after {
 			width: 100%;
 			height: 1px;
@@ -143,7 +143,7 @@ $shadow: 0 13px 26px rgba(#000, .2), 0 3px 6px rgba(#000, .2);
 			margin-top: 1.3em;
 			background: #E9EFF6;
 		}
-
+		
 		.check {
 			position: absolute;
 			right: 5em;
@@ -156,7 +156,7 @@ $shadow: 0 13px 26px rgba(#000, .2), 0 3px 6px rgba(#000, .2);
 				line-height: 20px;
 				text-align: center;
 				border-radius: 100%;
-
+				
 			}
 		}
 		.thumbnail {
@@ -175,7 +175,7 @@ $shadow: 0 13px 26px rgba(#000, .2), 0 3px 6px rgba(#000, .2);
 			font-weight: 600;
 			text-align: center;
 		}
-
+		
 		.title {
 			color: #7C8097;
 			font-size: .75em;
@@ -186,7 +186,7 @@ $shadow: 0 13px 26px rgba(#000, .2), 0 3px 6px rgba(#000, .2);
 			letter-spacing: 1.5px;
 			text-transform: uppercase;
 		}
-
+		
 		.description {
 			color: #080911;
 			font-size: 14px;
@@ -194,7 +194,7 @@ $shadow: 0 13px 26px rgba(#000, .2), 0 3px 6px rgba(#000, .2);
 			text-align: center;
 			margin-bottom: 1.3em;
 		}
-
+		
 		.btn {
 			color: #fff;
 			width: 130px;
@@ -211,12 +211,12 @@ $shadow: 0 13px 26px rgba(#000, .2), 0 3px 6px rgba(#000, .2);
 			background: $purple-gradient;
 		}
 	}
-
+	
 	.social-icons {
 		display: flex;
 		margin-top: 1.2em;
 		justify-content: space-between;
-
+		
 		.icon {
 			display: flex;
 			align-items: center;
@@ -246,39 +246,40 @@ $shadow: 0 13px 26px rgba(#000, .2), 0 3px 6px rgba(#000, .2);
 					background: $blue2-gradient;
 				}
 			}
-
+			
 			h4 {
 				color: #080911;
 				font-size: 1em;
 				margin-top: 1.3em;
 				margin-bottom: .2em;
 			}
-
-
+			
+			
 			p {
 				color: #666B7D;
 				font-size: 12px;
-
-			p {
-				color: #666B7D;
-				font-size: 12px;		
-
+				
+				p {
+					color: #666B7D;
+					font-size: 12px;		
+					
+				}
 			}
 		}
 	}
-}
-
-.concept {
-	position: absolute;
-	bottom: 25px;
-	color: #AAB0C4;
-	font-size: .9em;
-	font-weight: 400;
-	a {
-		color: rgba(172,25,102,1);
-		text-decoration: none;
+	
+	.concept {
+		position: absolute;
+		bottom: 25px;
+		color: #AAB0C4;
+		font-size: .9em;
+		font-weight: 400;
+		a {
+			color: rgba(172,25,102,1);
+			text-decoration: none;
+		}
 	}
+	
+	
+	
 }
-
-
-
