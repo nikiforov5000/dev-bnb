@@ -1,9 +1,15 @@
-<div class="container">
-  <h1>Write a review</h1>
-  <%= simple_form_for [@booking, @review] do |f| %>
-    <%= f.input :title %>
-    <%= f.input :content %>
-    <%= f.input :rating %>
-    <%= f.submit "Post review", class: "btn btn-primary" %>
-  <% end %>
+<div class="container ">
+  <div class="row justify-content-center">
+    <h1 class="margin-top">Write a review</h1>
+  </div>
+  <div class="row justify-content-center">
+    <div class="form margin-top">
+      <%= simple_form_for [@booking, @review] do |f| %>
+        <%= f.input :title %>
+        <%= f.input :content %>
+        <%= f.input :rating %>
+        <%= f.submit "Post review", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
 </div>
