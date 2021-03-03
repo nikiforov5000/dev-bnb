@@ -1,4 +1,9 @@
 <div class="container">
   <h1>Write a review</h1>
-  <p>Find me in app/views/reviews/new.html.erb</p>
+  <%= simple_form_for [@booking, @review] do |f| %>
+    <%= f.input :title %>
+    <%= f.input :content %>
+    <%= f.input :rating %>
+    <%= f.submit "Post review", class: "btn btn-primary" %>
+  <% end %>
 </div>
