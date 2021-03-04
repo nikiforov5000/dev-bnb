@@ -10,6 +10,8 @@
         <%= f.input :age %>
         <%= f.input :bio %>
         <%= f.input :daily_rate %>
+         <div class="form-group">
+        <%= f.input :photo, as: :file %>
         <%= f.submit "Create profile", class: "btn btn-primary" %>
       <% end %>
     </div>
