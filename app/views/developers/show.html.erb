@@ -9,7 +9,27 @@
 			<p class="title">Profile</p>
 			<p class="title">$<%= @developer.daily_rate %></p>
 			<p class="description"><%= @developer.bio %></p>
-			<button type="button" class="btn"><%= link_to "Hire", new_developer_booking_path(@developer)  %> </button>
+
+      <h4>
+        Skills
+        <% if current_user == @developer.owner %>
+          <%= link_to "+", new_developer_developer_skill_path(@developer) %>
+        <% end %>
+      </h4>
+      <p>
+        <% @developer.developer_skills.each do |developer_skill| %>
+          <%= developer_skill.skill.name %> - <%= developer_skill.years_of_experience %> years
+          <% if current_user == @developer.owner %>
+            <%= link_to developer_skill_path(developer_skill), method: :delete do %>
+              <i class="far fa-trash-alt"></i>
+            <% end %>
+          <% end %>
+        <br>
+        <% end %>
+      </p>
+
+			<button type="button" class="btn"><%= link_to "Hire developer", new_developer_booking_path(@developer) %></button>
+
 		</div>
 	</div>
 </div>
