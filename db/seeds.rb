@@ -4,10 +4,11 @@ puts "Clean database"
 
 # USER ############################
 User.destroy_all
-Developer.destroy_all
-
 puts "Destroy Users"
-20.times do
+Developer.destroy_all
+puts "--Destroy Developers"
+
+10.times do
   user = User.new(
     name: Faker::Name.name,
     email: Faker::Internet.email,
@@ -17,33 +18,73 @@ puts "Destroy Users"
   puts user.name
   puts user.email
   puts user.password
+
   # DEVELOPER ########################
   4.times do
-    puts "--Destroy Developers"
+    new_name = Faker::Name.name
+    puts new_name
+    specialty = %w[PHP JS Ruby Web-Design C++ Pascal C# CSS HTML SASS jQuery Java C Python].sample(2)
+    specialty = "#{specialty[0]}, #{specialty[1]}"
     developer = Developer.new(
       owner: User.last,
-      name: Faker::Name.name,
-      specialty: %w[PHP JS Ruby Web-Design C++ Pascal].sample,
+      name: new_name,
+      specialty: specialty,
       age: rand(18..65),
-      bio: "A good bio can be used to help find employment
-      or establish your credentials as an expert in
-      software development. So, a powerful bio is a
-      must-have for anyone. Want to see a great
-      example? This
-      may help you out.
-      software developer bio",
+      bio: ["Hi, I'm #{new_name}! I am a full-stack Web Application Developer and #{specialty} Developer, 
+        currently living in Philadelphia, PA. I have a Bachelor of Science in Computer 
+        Science from Northeastern University, and my primary focus and inspiration for my 
+        studies is Web Development. In my free time, I study human computer interface and 
+        the psychology of human computer interaction.",
+        "My name is #{new_name} and I am a full-stack #{specialty} Developer and 
+        Software Developer, currently living in Philadelphia, PA. I have a Bachelor of 
+        Science in Computer Science from Northeastern University, and my primary focus 
+        and inspiration for my studies is Web Development. In my free time, I study human 
+        computer interface and the psychology of human computer interaction.",
+        "#{new_name} is a #{specialty} professional at HubSpot.INC, an inbound marketing 
+        and sales platform that helps companies attract visitors, convert leads, and close 
+        customers. Previously, Rodney worked as a marketing manager for a tech software startup. 
+        He graduated with honors from Columbia University with a dual degree in Business 
+        Administration and Creative Writing"
+      ].sample,
       daily_rate: rand(20..200)
     )
     developer.save!
-    puts developer.owner
-    puts developer.name
-    puts developer.specialty
-    puts developer.age
-    puts developer.bio
-    puts developer.daily_rate
-  end
 
+    
+    # BOOKING ##########################
+    Booking.destroy_all
+    1.times do
+      booking = Booking.new(
+        project_name: 
+          [
+            "Add a new feature to your #{developer.specialty} application",
+            "Convert xd to html, sketch to html, psd to html responsive bootstrap 4",
+            "Code #{developer.specialty} script, projects, automation tasks, web scraping",
+            "Sql database design, er diagram queries, #{developer.specialty} python projects",
+            "Be your airtable expert and consultant",
+            "Convert website#{developer.specialty} to android app and ios app",
+            "Fix any bug in your #{developer.specialty} app",
+            "Develop android and IOS#{developer.specialty} app using #{developer.specialty}",
+            "Be #{developer.specialty} app developer for android app and ios app",
+            "write a #{developer.specialty} python 3 script",
+            "Complete #{developer.specialty} projects professionally",
+            "Give you aquos, my best forex expert advisor with PDF and VIP telegram group",
+            "Do programming in c #{developer.specialty}"
+          ].sample,
+        start_date: Date.today-rand(10000), 
+        end_date: Date.today+rand(10000), 
+        total_price: rand(500..5000), 
+        status: %w[accepted pending].sample,
+        developer: Developer.all.sample,
+        renter: User.all.sample
+      )
+      booking.save!
+      puts "Bookings ok!"
+    end
+
+  end
 end
+
 
 
 # BOOKING ##########################
@@ -63,12 +104,13 @@ Booking.destroy_all
 
 
 end
+
 4.times do
   booking = Booking.new(
-    project_name: Faker::Game.title,
-    start_date: Date.new,
-    end_date: Date.new + 1,
-    total_price: rand(500..5000),
+    project_name: Faker::Game.title, 
+    start_date: Date.today-rand(10000), 
+    end_date: Date.today+rand(10000), 
+    total_price: rand(500..5000), 
     status: %w[accepted pending].sample,
     developer: Developer.all.sample,
     renter: User.first
@@ -80,10 +122,12 @@ end
 end
 5.times do
   booking = Booking.new(
-    project_name: Faker::Game.title,
-    start_date: Date.new,
-    end_date: Date.new + 1,
-    total_price: rand(500..5000),
+
+    project_name: Faker::Game.title, 
+    start_date: Date.today-rand(10000), 
+    end_date: Date.today+rand(10000), 
+    total_price: rand(500..5000), 
+
     status: %w[accepted pending].sample,
     developer: User.first.developers.sample,
     renter: User.all.sample
@@ -132,3 +176,6 @@ puts "Finish"
 # # SKILL
 # name
 # # DEVELOPER_SKILL
+
+
+
