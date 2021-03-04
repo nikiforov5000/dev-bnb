@@ -9,12 +9,29 @@
   <p>Status: <%= @booking.status %></p>
   <%= link_to "Write a review", new_booking_review_path(@booking) %> <br>
 
-  <h4>Reviews : </h4>
-  <% @booking.reviews.each do |review| %>
-    <%= review.title %>
-    <%= review.rating %>
-    <%= review.content %>
-    <br>
+    <%######################################### ADD Change status of booking  %>
+
+<% if @booking.status == "pending" && @booking.renter != current_user %>
+  
+  <%= simple_form_for @booking do |f| %>
+    <%= f.input :status, input_html: { value: "accepted" }, as: :hidden %>
+    <%= f.submit "Accept", class:"btn btn-success" %>
   <% end %>
 
+  <%= simple_form_for @booking do |f| %>
+    <%= f.input :status, input_html: { value: "rejected" }, as: :hidden %>
+    <%= f.submit "Reject", class:"btn btn-danger" %>
+  <% end %>
+ 
+<% end %>
+    
+    <%######################################### ADD Change status of booking  %>
+
+  <h4>Reviews : </h4>
+  <% @booking.reviews.each do |review| %>
+    <p><%= review.title %></p>
+    <p>Rating: <%= review.rating %></p>
+    <p><%= review.content %></p>
+    <br>
+  <% end %>
 </div>

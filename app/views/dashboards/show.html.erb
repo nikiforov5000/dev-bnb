@@ -25,6 +25,7 @@
         bookings: @bookings = @my_bookings_accepted
         } %>
       <hr>
+      <h6>Pending: <%= @my_bookings_pending.count %> </h6>
       <%= render 'layouts/bookings_form', locals: {
         bookings: @bookings = @my_bookings_pending
         } %>
