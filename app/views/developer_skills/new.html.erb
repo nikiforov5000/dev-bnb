@@ -1,0 +1,14 @@
+<div class="container ">
+  <div class="row justify-content-center">
+    <h1 class="margin-top">Add a skill</h1>
+  </div>
+  <div class="row justify-content-center">
+    <div class="form margin-top">
+      <%= simple_form_for [@developer, @developer_skill] do |f| %>
+        <%= f.association :skill %>
+        <%= f.input :years_of_experience %>
+        <%= f.submit "Add developer skill", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
