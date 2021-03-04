@@ -5,4 +5,11 @@ class Developer < ApplicationRecord
   has_many :developer_skills
   has_many :skills, through: :developer_skill
   validates :name, presence: true
+
+  # include PgSearch::Model
+  # pg_search_scope :search_by_specialty,
+  #   against: [ :specialty ],
+  #   using: {
+  #     tsearch: { prefix: true }
+  #   }
 end
