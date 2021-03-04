@@ -7,10 +7,12 @@
       <% @title_content = "My offers" %>
       <%= render "layouts/header_for_index", locals: { title_content: @title_content } %>
       <% @title_content = "My offers" %>
+      <h6>Accepted: <%= @requests_accepted.count %> </h6>
       <%= render 'layouts/bookings_form', locals: {
         bookings: @bookings = @requests_accepted
         } %>
       <hr>
+      <h6>Pending: <%= @requests_pending.count %> </h6>
       <%= render 'layouts/bookings_form', locals: {
         bookings: @bookings = @requests_pending
         } %>
@@ -18,6 +20,7 @@
     <div class="col-6 bg-success">
       <% @title_content = "My current bookings" %>
       <%= render "layouts/header_for_index", locals: { title_content: @title_content } %>
+      <h6>Accepted: <%= @my_bookings_accepted.count %> </h6>
       <%= render 'layouts/bookings_form', locals: {
         bookings: @bookings = @my_bookings_accepted
         } %>
