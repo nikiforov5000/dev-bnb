@@ -1,20 +1,30 @@
 <div class="container">
-  <h1>Here is your booking</h1>
-  <%= link_to "To my dashboard", "" %>
-  <p>From <%= @booking.start_date %> To <%= @booking.end_date %></p>
-  <p>Name of the developer: <%= link_to @booking.developer.name, developer_path(@booking.developer) %></p>
-  <p>Renter: <%= @booking.renter.name %></p>
-  <p>Owner: <%= @booking.developer.owner.name %></p>
-  <p>Total price: $<%= @booking.total_price %></p>
-  <p>Status: <%= @booking.status %></p>
-  <%= link_to "Write a review", new_booking_review_path(@booking) %> <br>
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <h1>Your booking with <%= @booking.developer.name %></h1>
+      <%= link_to "To my dashboard", dashboard_path %>
+      <p>From <%= @booking.start_date %> To <%= @booking.end_date %></p>
+      <p>Developer: <%= link_to @booking.developer.name, developer_path(@booking.developer) %></p>
+      <p>Renter: <%= @booking.renter.name %></p>
+      <p>Owner: <%= @booking.developer.owner.name %></p>
+      <p>Total price: $<%= @booking.total_price %></p>
+      <p>Status: <%= @booking.status %></p>
+    </div>
 
-  <h4>Reviews : </h4>
-  <% @booking.reviews.each do |review| %>
-    <%= review.title %>
-    <%= review.rating %>
-    <%= review.content %>
-    <br>
-  <% end %>
-
+    <div class="col-12 col-lg-6">
+      <%= link_to "Write a review", new_booking_review_path(@booking) %> <br>
+      <h4>Reviews : </h4>
+      <% @booking.reviews.each do |review| %>
+        <h5><%= review.title %></h5>
+          <% review.rating.times do %>
+            <i class="fas fa-star" style="color:#ffd43d"></i>
+          <% end %>
+          <% (5-review.rating).times do %>
+            <i class="far fa-star"></i>
+          <% end %>
+        <p><%= review.content %></p>
+        <br>
+      <% end %>
+    </div>
+  </div>
 </div>
