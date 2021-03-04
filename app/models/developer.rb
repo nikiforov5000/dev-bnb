@@ -5,4 +5,5 @@ class Developer < ApplicationRecord
   has_many :developer_skills
   has_many :skills, through: :developer_skill
   validates :name, presence: true
+  has_one_attached :photo
 end
