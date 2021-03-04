@@ -1,3 +1,5 @@
+require 'date'
+
 class BookingsController < ApplicationController
   before_action :set_developer, only: [:new, :create]
   before_action :set_booking, only: :show
@@ -19,7 +21,10 @@ class BookingsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @show_review_button_renter = @booking.status == "accepted" && current_user == @booking.renter && @booking.start_date < Date.today
+    @show_review_button_owner = @booking.status == "accepted" && current_user == @booking.developer.owner && @booking.start_date < Date.today
+  end
 
   def update
     @booking = Booking.find(params[:id])
