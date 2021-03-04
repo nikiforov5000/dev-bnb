@@ -12,7 +12,12 @@
     </div>
 
     <div class="col-12 col-lg-6">
-      <%= link_to "Write a review", new_booking_review_path(@booking) %> <br>
+      <% if @show_review_button_renter %>
+        <%= link_to "Write a renter review", new_booking_review_path(@booking) %> <br>
+      <% end %>
+      <% if @show_review_button_owner %>
+        <%= link_to "Write an owner review", new_booking_review_path(@booking) %> <br>
+      <% end %>
       <h4>Reviews : </h4>
       <% @booking.reviews.each do |review| %>
         <h5><%= review.title %></h5>
@@ -31,7 +36,7 @@
 
 
 <% if @booking.status == "pending" && @booking.renter != current_user %>
-  
+
   <%= simple_form_for @booking do |f| %>
     <%= f.input :status, input_html: { value: "accepted" }, as: :hidden %>
     <%= f.submit "Accept", class:"btn btn-success" %>
@@ -41,6 +46,6 @@
     <%= f.input :status, input_html: { value: "rejected" }, as: :hidden %>
     <%= f.submit "Reject", class:"btn btn-danger" %>
   <% end %>
- 
+
 <% end %>
 
