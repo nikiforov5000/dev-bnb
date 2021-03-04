@@ -21,6 +21,18 @@ class BookingsController < ApplicationController
 
   def show; end
 
+  def update
+    @booking = Booking.find(params[:id])
+      if @booking.update_attributes(booking_params)
+        flash[:success] = "Object was successfully updated"
+        redirect_to @booking
+      else
+        flash[:error] = "Something went wrong"
+        render 'edit'
+      end
+  end
+
+
   private
 
   def set_booking
@@ -28,7 +40,7 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :project_name)
+    params.require(:booking).permit(:start_date, :end_date, :project_name, :status)
   end
 
   def set_developer

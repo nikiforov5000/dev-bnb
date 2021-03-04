@@ -8,6 +8,10 @@ gem 'faker'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.5'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
+
+# pg_search
+gem 'pg_search', '~> 2.3.0'
+
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
@@ -61,3 +65,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'cloudinary'

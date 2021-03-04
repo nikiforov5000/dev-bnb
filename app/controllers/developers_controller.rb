@@ -1,13 +1,18 @@
 class DevelopersController < ApplicationController
 
   before_action :set_developer, only: :show
-  def index 
-   # if params[:query].present? 
-    #  @query = params[:query]
-    #  @developers = Developer.where(name: "%#{params[:query]}%")
-   # else
-    @developers = Developer.all
-   # end
+
+  def index
+    @specialtys = %w[PHP JS Ruby Web-Design C++ Pascal C# CSS HTML SASS jQuery Java C Python]
+    if params[:query].present?
+      sql_query = "\
+        developers.specialty @@ :query \
+        OR developers.bio @@ :query \
+        "
+      @developers = Developer.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @developers = Developer.all
+    end
   end
 
   def show
@@ -35,6 +40,6 @@ class DevelopersController < ApplicationController
   end
 
   def developer_params
-    params.require(:developer).permit(:name, :specialty, :age, :bio, :daily_rate)
+    params.require(:developer).permit(:name, :specialty, :age, :bio, :daily_rate, :photo)
   end
 end

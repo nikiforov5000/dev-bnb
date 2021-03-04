@@ -28,3 +28,19 @@
     </div>
   </div>
 </div>
+
+
+<% if @booking.status == "pending" && @booking.renter != current_user %>
+  
+  <%= simple_form_for @booking do |f| %>
+    <%= f.input :status, input_html: { value: "accepted" }, as: :hidden %>
+    <%= f.submit "Accept", class:"btn btn-success" %>
+  <% end %>
+
+  <%= simple_form_for @booking do |f| %>
+    <%= f.input :status, input_html: { value: "rejected" }, as: :hidden %>
+    <%= f.submit "Reject", class:"btn btn-danger" %>
+  <% end %>
+ 
+<% end %>
+
