@@ -1,5 +1,5 @@
 require 'faker'
-
+DeveloperSkill.destroy_all
 puts "Clean database"
 
 # USER ############################
@@ -48,6 +48,8 @@ puts "--Destroy Developers"
       ].sample,
       daily_rate: rand(20..200)
     )
+    file = URI.open('https://source.unsplash.com/random')
+    developer.photo.attach(io: file, filename: 'nes.jpeg', content_type: 'image/jpeg')
     developer.save!
 
     
@@ -176,6 +178,9 @@ puts "Finish"
 # # SKILL
 # name
 # # DEVELOPER_SKILL
+
+#developer.create
+#attach a photo 
 
 
 
