@@ -1,20 +1,29 @@
 <div class="container">
   <div class="row d-flex justify-content-center"> 
     <% @developers.each do |developer| %>
-      <div class="col-lg-4">
-        <div class="card m-2" style="">
-          <% if developer.photo.attached? %>
-            <%= cl_image_tag developer.photo.key, height: 80, width: 80, crop: :fill %>
-            <%#= cl_image_tag developer.photo.key, height: 60, width: 60, crop: :fill %>
-          <% end %>
-          <div class="card-body">
-            <h5 class="card-title"><%= link_to developer.name, developer %></h5>
-            <p class="card-text">Specialty: <%= developer.specialty %></p>
-            <p class="card-text">Price per day: $<%= developer.daily_rate %></p>
-            <%= link_to "See details", developer, class: "btn btn-primary" %>
+      <div class="col-lg-4 my-1">
+        <div class="card-developer" style="">
+          <div class="row">
+            <div class="col-4 d-flex align-items-center">
+              <% if developer.photo.attached? %>
+                <%= cl_image_tag developer.photo.key, height: 80, width: 80, crop: :fit, class: "avatar w-100" %>
+              <% end %>
+            </div>
+            <div class="col-8">
+              <div class="">
+                <div class="developer-card-title text-nowrap"><%= "#{developer.name}" %></div>
+                <p class="developer-card-text"> <%= developer.specialty %></p>
+                <p class="developer-card-text">Price per day: $<%= developer.daily_rate %></p>
+                <%= link_to "See details", developer, class: "btn purple" %>
+                <p></p>
+              </div>
+            </div>
           </div>
         </div>
+
+
+
       </div>
     <% end %>
   </div> 
-</div>  
+</div>
