@@ -1,1 +1,43 @@
-// Specific CSS for your home-page
+$purple-gradient: linear-gradient(45deg, rgba(216, 224, 247, 1) 0%,rgba(228, 241, 255, 0.5));
+//$purple-gradient: linear-gradient(to bottom right, #dbdbe2, #dee9f3);
+$blue1-gradient: linear-gradient(to bottom right, #605be7, #3F9EFC);
+
+.card-developer, .developer-search {
+  // padding-bottom: 20px;
+  color: rgb(66, 66, 66);
+  background: $purple-gradient;
+  border-radius: 10px;
+  padding: 5px;
+  .button-purple {
+    margin-left: 16px;
+    padding: 5px 15px;
+    color: white;
+    border-radius: 2px;
+    background: $blue1-gradient;
+  }
+  .developer-card-text {
+    line-height: 10px;
+  }
+  .developer-card-title {
+    font-weight: bold;
+    text-decoration: none;
+    color: inherit;
+    margin: 10px 0;
+  }
+  .developer-index-photo {
+  }
+
+
+}
+
+
+
+.purple {
+  color: white;
+  background: $blue1-gradient;
+}
+
+.developer-search {
+  height: 70vh;
+  position: fixed;
+}

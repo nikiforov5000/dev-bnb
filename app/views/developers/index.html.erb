@@ -1,27 +1,36 @@
-<% @title_content = "All developers" %>
+<div class="main-container">
+  <% @title_content = "All developers" %>
 
-<%= form_tag root_path, method: :get do %>
-  <%= 
-    text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find a developer"
-  %>
+  <div class="row">
+    <div class="col-3 ">
+      <div class="developer-search w-25">
+        <%= form_tag root_path, method: :get do %>
+          <%= 
+            text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Find a developer"
+          %>
 
-  <ul class="bg-light">
-    <% @specialtys.each do |specialty| %>
-        <span>
-          <%= check_box_tag 'query', specialty %>
-          <%= "#{specialty}" %>
-        </span>
-    <% end %>
-</ul>
+          <ul class="">
+            <% @specialtys.each do |specialty| %>
+              <li>
+                <%= check_box_tag 'query', specialty %>
+                <%= "#{specialty}" %>
+              </li>
+            <% end %>
+          </ul>
 
-  <%= submit_tag "Search", class: "btn btn-primary btn-block" %>
-<% end %>
+          <%= submit_tag "Search", class: "btn btn-block purple" %>
+        <% end %>
+      </div>
+    </div>
 
- 
+    <div class="col-9">
+      <%= link_to "Add developer", new_developer_path, class: "btn purple mt-1 ml-3" %>
+      <%= render "layouts/header_for_index", locals: { title_content: @title_content } %>
+      <%= render 'layouts/developers_index' %>
+    </div>
+  </div>
+</div>
 
-<%= link_to "Add developer", new_developer_path %>
-<%= render "layouts/header_for_index", locals: { title_content: @title_content } %>
-<%= render 'layouts/developers_index' %>
