@@ -29,6 +29,7 @@
       <%= link_to "Book", new_developer_booking_path(@developer), class: "btn" %>
       <%#= link_to "Hire developer", new_developer_booking_path(@developer)%>
 
+
   <div class="social-icons">
 		<div class="icon">
 			<a href="/"><i class="fab fa-dribbble"></i></a>
@@ -40,12 +41,23 @@
 		
 		<div class="icon">
 			<a href="#"><i class="fab fa-twitter"></i></a>
+
+			<button type="button" class="btn"><%= link_to "Hire developer", new_developer_booking_path(@developer) %></button>
+      <% if !@reviews.empty? %>
+        <% @reviews.each do |review| %>
+          <h5><%= review.title %></h5>
+            <% review.rating.times do %>
+              <i class="fas fa-star" style="color:#ffd43d"></i>
+            <% end %>
+            <% (5-review.rating).times do %>
+              <i class="far fa-star"></i>
+            <% end %>
+          <p><%= review.content %></p>
+          <br>
+        <% end %>
+      <% else %>
+        <p>No reviews on this developer yet</p>
+      <% end %>
 		</div>
 	</div>
-
-
-
-
-    </div>
-  </div>
 </div>

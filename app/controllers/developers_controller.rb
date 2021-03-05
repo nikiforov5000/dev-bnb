@@ -17,6 +17,9 @@ class DevelopersController < ApplicationController
 
   def show
     @developer
+    @reviews = Review.select do |review|
+      review.developer == @developer
+    end
   end
 
   def new
