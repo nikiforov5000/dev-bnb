@@ -4,7 +4,8 @@
       <div class="col-lg-4">
         <div class="card m-2" style="">
           <% if developer.photo.attached? %>
-            <%= cl_image_tag developer.photo.key, height: 60, width: 60, crop: :fill %>
+            <%= cl_image_tag developer.photo.key, height: 80, width: 80, crop: :fill %>
+            <%#= cl_image_tag developer.photo.key, height: 60, width: 60, crop: :fill %>
           <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= link_to developer.name, developer %></h5>
