@@ -1,51 +1,88 @@
-<div class="container">
+<div class="custom-container">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="title margin-top margin-bottom">Your booking with <%= link_to @booking.developer.name, developer_path(@booking.developer) %></h1>
+    </div>
+  </div>
+</div>
+<div class="custom-container justify-space-between">
   <div class="row">
     <div class="col-12 col-lg-6">
-      <h1>Your booking with <%= @booking.developer.name %></h1>
-      <%= link_to "To my dashboard", dashboard_path %>
-      <p>From <%= @booking.start_date %> To <%= @booking.end_date %></p>
-      <p>Developer: <%= link_to @booking.developer.name, developer_path(@booking.developer) %></p>
-      <p>Renter: <%= @booking.renter.name %></p>
-      <p>Owner: <%= @booking.developer.owner.name %></p>
-      <p>Total price: $<%= @booking.total_price %></p>
-      <p>Status: <%= @booking.status %></p>
+      <div class="summary">
+        <h4>Summary :</h4>
+        <div class="info-summary">
+          <p><strong>Status</strong>: <%= @booking.status.capitalize %></p>
+          <p><strong>Dates</strong>: <%= @booking.start_date.strftime("%B %d, %Y") %> <strong>To</strong> <%= @booking.end_date.strftime("%B %d, %Y") %></p>
+          <p><strong>Total price</strong>: $<%= @booking.total_price %></p>
+          <p><strong>Project name</strong>: <%= @booking.project_name %></p>
+          <p><strong>Developer Owner</strong>: <%= @booking.developer.owner.name %></p>
+
+
+          <% if @booking.status == "pending" && @booking.developer.owner == current_user %>
+            <div class="action-buttons">
+              <div class="buttons">
+
+                <%= simple_form_for @booking do |f| %>
+                <%= f.input :status, input_html: { value: "Accepted" }, as: :hidden %>
+                <%= f.submit "Accept", class:"accept-booking" %>
+                <% end %>
+
+                <div class="blank">
+                </div>
+
+                <%= simple_form_for @booking do |f| %>
+                <%= f.input :status, input_html: { value: "Rejected" }, as: :hidden %>
+                <%= f.submit "Reject", class:"reject-booking" %>
+                <% end %>
+
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
 
-    <div class="col-12 col-lg-6">
-      <% if @show_review_button_renter %>
-        <%= link_to "Write a renter review", new_booking_review_path(@booking) %> <br>
-      <% end %>
-      <% if @show_review_button_owner %>
-        <%= link_to "Write an owner review", new_booking_review_path(@booking) %> <br>
-      <% end %>
-      <h4>Reviews : </h4>
-      <% @booking.reviews.each do |review| %>
-        <h5><%= review.title %></h5>
-          <% review.rating.times do %>
-            <i class="fas fa-star" style="color:#ffd43d"></i>
-          <% end %>
-          <% (5-review.rating).times do %>
-            <i class="far fa-star"></i>
-          <% end %>
+    <div class="col-lg-1">
+    </div>
+    <div class="col-12 col-lg-5">
+      <div id="review-area">
+        <% if @show_review_button_renter %>
+        <%= link_to "Write a renter review", new_booking_review_path(@booking), class: "add-review-button" %> <br>
+        <% elsif @show_review_button_owner %>
+        <%= link_to "Write an owner review", new_booking_review_path(@booking), class: "add-review-button" %> <br>
+        <% else %>
+          <p class="add-review-button">You can't add a review</p>
+        <% end %>
+      </div>
+      <h4><%= pluralize @booking.reviews.count, "Review" %> :</h4>
+      <% @booking.reviews.reverse.each do |review| %>
+      <div class="review">
+        <div class="review-title">
+          <h5><%= review.title %></h5>
+          <div class="author">
+            - by <%= current_user.name.split[0] %>
+            <% if current_user == @booking.developer.owner %>
+            (Owner)
+            <% elsif current_user == @booking.renter %>
+            (Renter)
+            <% end %>
+          </div>
+          <div class="review-date">
+            <%= review.created_at.strftime("%B %d, %Y, %I:%M %p") %>
+          </div>
+        </div>
+        <% review.rating.times do %>
+        <i class="fas fa-star" style="color:#ffd43d"></i>
+        <% end %>
+        <% (5-review.rating).times do %>
+        <i class="far fa-star" style="color:#bcb6c1"></i>
+        <% end %>
         <p><%= review.content %></p>
-        <br>
+      </div>
       <% end %>
     </div>
   </div>
 </div>
 
 
-<% if @booking.status == "pending" && @booking.renter != current_user %>
-
-  <%= simple_form_for @booking do |f| %>
-    <%= f.input :status, input_html: { value: "accepted" }, as: :hidden %>
-    <%= f.submit "Accept", class:"btn btn-success" %>
-  <% end %>
-
-  <%= simple_form_for @booking do |f| %>
-    <%= f.input :status, input_html: { value: "rejected" }, as: :hidden %>
-    <%= f.submit "Reject", class:"btn btn-danger" %>
-  <% end %>
-
-<% end %>
 
