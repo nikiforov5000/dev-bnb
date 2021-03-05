@@ -1,0 +1,51 @@
+.review {
+  border: 1px solid #bcb6c1;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 10px 10px 10px 10px;
+  /* font-color: white; */
+
+  p {
+    margin: 0;
+    font-family: 'Mukta', sans-serif;
+  }
+
+  .review-date {
+    font-size: 12px;
+    margin-left: auto;
+  }
+
+  .author {
+    font-size: 14px;
+    font-style: italic;
+  }
+
+  .review-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    h5 {
+      margin: 0;
+      /* font-color: white; */
+    }
+  }
+}
+
+#review-area {
+    text-align: right;
+    margin-bottom: 40px;
+    margin-top: 10px;
+  }
+
+.add-review-button {
+    a {
+      text-decoration: none;
+    }
+    padding: 15px;
+    border-radius: 5px;
+    color: white;
+    background-color: orange;
+    text-align: center;
+  }
+
+

@@ -1,0 +1,31 @@
+.summary {
+  /* font-color: white; */
+
+  h4 {
+    margin-top: 40px;
+    font-size: 32px;
+    margin-bottom: 20px;
+    /* font-color: white; */
+  }
+
+  .info-summary {
+    border: 1px solid #bcb6c1;
+    border-radius: 5px;
+    padding: 20px 15px 20px 15px;
+  }
+
+  .action-buttons {
+    display: flex;
+  }
+
+  .buttons {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 15px;
+  }
+
+  .blank {
+    width: 20px;
+  }
+}
