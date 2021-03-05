@@ -9,12 +9,12 @@
       <p class="title">$<%= @developer.daily_rate %></p>
       <p class="description"><%= @developer.bio %></p>
 
-      <h4>
-        Skills
+      <p>
+        Language:
         <% if current_user == @developer.owner %>
           <%= link_to "+", new_developer_developer_skill_path(@developer) %>
         <% end %>
-      </h4>
+      </p>
       <p>
         <% @developer.developer_skills.each do |developer_skill| %>
           <%= developer_skill.skill.name %> - <%= developer_skill.years_of_experience %> years
@@ -26,9 +26,9 @@
         <br>
         <% end %>
       </p>
-      <%= link_to "Book", new_developer_booking_path(@developer), class: "btn" %>
+      <%#= link_to "Book", new_developer_booking_path(@developer), class: "btn" %>
       <%#= link_to "Hire developer", new_developer_booking_path(@developer)%>
-
+  
 
   <div class="social-icons">
 		<div class="icon">
@@ -38,12 +38,11 @@
 		<div class="icon">
 			<a href="#"><i class="fab fa-behance"></i></a>
 		</div>
-		
-		<div class="icon">
-			<a href="#"><i class="fab fa-twitter"></i></a>
-
-			<button type="button" class="btn"><%= link_to "Hire developer", new_developer_booking_path(@developer) %></button>
-      <% if !@reviews.empty? %>
+    <div>
+    <%= link_to "Book", new_developer_booking_path(@developer), class: "btn" %>
+    </div>
+  </div>
+  <% if !@reviews.empty? %>
         <% @reviews.each do |review| %>
           <h5><%= review.title %></h5>
             <% review.rating.times do %>
@@ -58,6 +57,7 @@
       <% else %>
         <p>No reviews on this developer yet</p>
       <% end %>
-		</div>
-	</div>
+  </div>
+  
+</div>
 </div>
