@@ -1,4 +1,5 @@
 require 'faker'
+
 DeveloperSkill.destroy_all
 puts "Clean database"
 
